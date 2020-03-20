@@ -2,19 +2,19 @@
 title: Istio
 ---
 
-_Available as of v2.3.0_
+_在 Rancher v2.3.0 已及更新的版本中可用_
 
-Using Rancher, you can connect, secure, control, and observe services through integration with [Istio](https://istio.io/), a leading open-source service mesh solution. Istio provides behavioral insights and operational control over the service mesh as a whole, offering a complete solution to satisfy the diverse requirements of microservice applications.
+使用 Rancher，你可以通过集成[Istio](https://istio.io/)来连接、保护、控制和观察服务。Istio 是一个业界领先的开源服务网格解决方案。Istio 在整个服务网格上提供行为观察和操作控制的能力。Istio 提供了一整套满足微服务应用各种需求的解决方案。
 
-This service mesh provides features that include but are not limited to the following:
+Istio 提供了很多功能，包括但不限于：
 
-- Traffic management features
-- Enhanced monitoring and tracing
-- Service discovery and routing
-- Secure connections and service-to-service authentication with mutual TLS
-- Load balancing
-- Automatic retries, backoff, and circuit breaking
+- 流量控制
+- 高级监控和追踪
+- 服务发现和路由
+- 安全连接和通过 TLS 建立服务之间的双向认证
+- 负载均衡
+- 自动重试，限流和熔断
 
-Istio needs to be set up by a Rancher administrator or cluster administrator before it can be used in a project for [comprehensive data visualizations,](/docs/cluster-admin/tools/istio/#accessing-visualizations) traffic management, or any of its other features.
+在 Rancher 项目中使用 Istio 的流量控制、[全面数据可视化](/docs/cluster-admin/tools/istio/_index)或其他功能之前，需要 Rancher 管理员或集群管理员在集群中一键启用 Istio。
 
-For information on how Istio is integrated with Rancher and how to set it up, refer to the [section about Istio.](/docs/cluster-admin/tools/istio)
+如果您想了解更多关于 Istio 在 Rancher 中是如何集成的，请参考[Istio 相关章节](/docs/cluster-admin/tools/istio/_index)。

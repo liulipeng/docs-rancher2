@@ -2,66 +2,63 @@
 title: 命名空间
 ---
 
-Within Rancher, you can further divide projects into different [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters within a project backed by a physical cluster. Should you require another level of organization beyond projects and the `default` namespace, you can use multiple namespaces to isolate applications and resources.
+在 Rancher 中，您可以进一步将项目分隔为多个[命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces)。项目是由物理集群支持的。而命名空间是项目中的虚拟集群。当项目和`default`命名空间不能满足您的管理需时，你可以在项目中创建多个命名空间来隔离你的应用和资源。
 
-Although you assign resources at the project level so that each namespace in the project can use them, you can override this inheritance by assigning resources explicitly to a namespace.
+你可以在项目层级分配资源，从而使项目中的每个命名空间可以使用这些资源。但你也可以单独给某个命名空间分配资源。
 
-Resources that you can assign directly to namespaces include:
+可以直接分配给命名空间的资源类型包括：
 
-* [Workloads](/docs/k8s-in-rancher/workloads/)
-* [Load Balancers/Ingress](/docs/k8s-in-rancher/load-balancers-and-ingress/)
-* [Service Discovery Records](/docs/k8s-in-rancher/service-discovery/)
-* [Persistent Volume Claims](/docs/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/)
-* [Certificates](/docs/k8s-in-rancher/certificates/)
-* [ConfigMaps](/docs/k8s-in-rancher/configmaps/)
-* [Registries](/docs/k8s-in-rancher/registries/)
-* [Secrets](/docs/k8s-in-rancher/secrets/)
+- [工作负载](/docs/k8s-in-rancher/workloads/_index)
+- [负载均衡和 Ingress](/docs/k8s-in-rancher/load-balancers-and-ingress/_index)
+- [服务发现记录](/docs/k8s-in-rancher/service-discovery/_index)
+- [存储卷声明](/docs/cluster-admin/volumes-and-storage/how-storage-works/_index)
+- [证书](/docs/k8s-in-rancher/certificates/_index)
+- [配置映射](/docs/k8s-in-rancher/configmaps/_index)
+- [镜像仓库凭证](/docs/k8s-in-rancher/registries/_index)
+- [密文](/docs/k8s-in-rancher/secrets/_index)
 
-To manage permissions in a vanilla Kubernetes cluster, cluster admins configure role-based access policies for each namespace. With Rancher, user permissions are assigned on the project level instead, and permissions are automatically inherited by any namespace owned by the particular project.
+在原生 Kubernetes 集群中管理访问权限，集群管理员需要给每一个命名空间配置角色控制策略 RBAC。在 Rancher 中管理访问权限则更加简单，用户可以在项目层级配置 RBAC，项目中的所有命名空间都会自动继承这个 RBAC 配置。
 
-> **Note:** If you create a namespace with `kubectl` , it may be unusable because `kubectl` doesn't require your new namespace to be scoped within a project that you have access to. If your permissions are restricted to the project level, it is better to [create a namespace through Rancher](/docs/project-admin/namespaces/#creating-namespaces) to ensure that you will have permission to access the namespace.
+> **说明：** 如果您使用 `kubectl` 创建了命名空间，可能会导致该命名空间不适用上述的项目层级管理权限分配策略，因为 `kubectl` 没有强制要求创建的命名空间位于您有权限访问的项目某个内。如果您只有某个项目的权限，我们建议您[通过 Rancher 来创建命名空间](/docs/project-admin/namespaces/_index)。
 
-#### Creating Namespaces
+## 创建命名空间
 
-Create a new namespace to isolate apps and resources in a project.
+创建命名空间的目的是隔离项目内的应用和资源。
 
-When working with project resources that you can assign to a namespace (i.e., [workloads](/docs/k8s-in-rancher/workloads/deploy-workloads/), [certificates](/docs/k8s-in-rancher/certificates/), [ConfigMaps](/docs/k8s-in-rancher/configmaps), etc.) you can create a namespace on the fly.
+当你在操作可以分配到命名空间的资源时，例如[工作负载](/docs/k8s-in-rancher/workloads/deploy-workloads/_index)、[证书](/docs/k8s-in-rancher/certificates/_index)或[配置映射](/docs/k8s-in-rancher/configmaps/_index)，只需额外执行少许操作，就可以创建新的命名空间，具体步骤如下：
 
-1. From the **Global** view, open the project where you want to create a namespace.
+1. 访问 Rancher UI **全局** 页面，单击项目，跳转到某个项目。
 
-   > **Tip:** As a best practice, we recommend creating namespaces from the project level. However, cluster owners and members can create them from the cluster level as well.
+   > **提示：** 虽然在集群层级和项目层级都可以创建命名空间，但是为了保证操作和描述的一致性，我们建议在项目层级创建命名空间。
 
-1. From the main menu, select **Namespace**. The click **Add Namespace**.
+1. 从主菜单中选择**命名空间**，然后单击**添加命名空间**，新建命名空间。
 
-1. **Optional:** If your project has [Resource Quotas](/docs/k8s-in-rancher/projects-and-namespaces/resource-quotas) in effect, you can override the default resource **Limits** (which places a cap on the resources that the namespace can consume).
+1. **可选：** 如果您的项目的[资源配额](/docs/project-admin/resource-quotas/_index)已经生效，您可以修改默认的命名空间资源配额，你可以覆盖默认的资源限制（这个命名空间可以使用的资源上限）。
 
-1. Enter a **Name** and then click **Create**.
+1. 输入新建命名空间的**名称**，单击**创建**，创建命名空间。
 
-**Result:** Your namespace is added to the project. You can begin assigning cluster resources to the namespace.
+**结果：** 完成创建命名空间，而且该命名空间已经自动添加到了项目中。您可以开始将集群资源分配给这个命名空间。
 
-#### Moving Namespaces to Another Project
+## 如何在项目间迁移命名空间
 
-Cluster admins and members may occasionally need to move a namespace to another project, such as when you want a different team to start using the application.
+集群管理员和集群成员也许偶尔有迁移命名空间的需求，例如，当你想让另外一个团队使用这个应用。所以 Rancher 提供了迁移命名空间的功能，具体操作步骤如下：
 
-1. From the **Global** view, open the cluster that contains the namespace you want to move.
+1. 访问 Rancher UI **全局** 页面，打开含有您想移动的命名空间的集群。
 
-1. From the main menu, select **Projects/Namespaces**.
+1. 打开主菜单，选择 **项目/命名空间**。
 
-1. Select the namespace(s) that you want to move to a different project. Then click **Move**. You can move multiple namespaces at one.
+1. 勾选您想要移动到其他项目的命名空间，单击**移动**，移动命名空间。您可以一次勾选多个命名空间，移动多个命名空间到另一个项目中。
 
-   > **Notes:**
+   > **注意事项：**
    >
-   > - Don't move the namespaces in the `System` project. Moving these namespaces can adversely affect cluster networking.
-   > - You cannot move a namespace into a project that already has a [resource quota](/docs/k8s-in-rancher/projects-and-namespaces/resource-quotas/) configured.
-   > - If you move a namespace from a project that has a quota set to a project with no quota set, the quota is removed from the namespace.
+   > - 请勿移动 `System` 项目内的任何命名空间。移动该项目内的命名空间会严重影响集群内的网络连接。
+   > - Rancher 不支持将命名空间移动到已经配置了[资源配额](/docs/project-admin/resource-quotas/_index)的项目中。
+   > - 如果把命名空间从一个已经配置了配额的项目中，移动到一个没有配置配额的项目中，这个命名空间的配额将会被移除。
 
-1. Choose a new project for the new namespace and then click **Move**. Alternatively, you can remove the namespace from all projects by selecting **None**.
+1. 给命名空间选择一个新的项目。然后点击**移动**。同时，你也可以通过选择**None**，把命名空间从所有项目中移除。
 
-**Result:** Your namespace is moved to a different project (or is unattached from all projects). If any project resources are attached to the namespace, the namespace releases them and then attached resources from the new project.
+**结果：** 您的命名空间已经移动到了新的项目中，或已经从所有项目中移除。如果命名空间和原来的项目中的资源有关联，移动命名空间会解除关联，并在新的项目中创建关联。
 
-#### Editing Namespace Resource Quotas
+## 修改命名空间的资源配额
 
-You can always override the namespace default limit to provide a specific namespace with access to more (or less) project resources.
-
-For more information, see how to [edit namespace resource quotas](/docs/project-admin//resource-quotas/override-namespace-default/#editing-namespace-resource-quotas).
-
+您可以修改命名空间默认的资源配额限制，让一个或多个指定的命名空间拥有更多或更少的项目资源配额。详情请参考[修改命名空间的资源配额](/docs/project-admin/resource-quotas/override-namespace-default/_index)。

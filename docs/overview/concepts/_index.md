@@ -15,7 +15,7 @@ _Docker_ 是容器打包和运行时系统的标准，主要用于管理各个�
 
 ## 关于 Kubernetes
 
-_Kubernetes_ 是容器和集群管理的标准。 YAML 文件规定了组成一个应用所需的容器和其他资源。 Kubernetes 提供了调度、伸缩、服务发现、健康检查、密文管理和配置管理等功能。
+_Kubernetes_ 是容器和集群管理的标准。YAML 文件规定了组成一个应用所需的容器和其他资源。Kubernetes 提供了调度、伸缩、服务发现、健康检查、密文管理和配置管理等功能。
 
 ## Kubernetes 集群是什么
 
@@ -39,7 +39,7 @@ etcd 更新集群状态前，需要集群中的所有节点通过 quorum 投票�
 
 ### Controlplane 节点
 
-Controlplane 节点上运行的工作负载包括：Kubernetes API server、scheduler 和 controller mananger。这些节点负载执行日常任务，从而确保你的集群状态和你的集群配置相匹配。因为 etcd 节点保存了集群的全部数据，所以 Controlplane 节点是无状态的。虽然可以在单个节点上运行 Controlplane，但是我们建议在两个或以上的节点上运行 Controlplane，以保证冗余性。另外，因为 Kubernetes 只要求每个节点至少要分配一个角色，所以一个节点可以既是 Controlplane 节点，又是 etcd 节点。
+Controlplane 节点上运行的工作负载包括：Kubernetes API server、scheduler 和 controller mananger。这些节点负载执行日常任务，从而确保您的集群状态和您的集群配置相匹配。因为 etcd 节点保存了集群的全部数据，所以 Controlplane 节点是无状态的。虽然可以在单个节点上运行 Controlplane，但是我们建议在两个或以上的节点上运行 Controlplane，以保证冗余性。另外，因为 Kubernetes 只要求每个节点至少要分配一个角色，所以一个节点可以既是 Controlplane 节点，又是 etcd 节点。
 
 ### Worker 节点
 

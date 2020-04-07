@@ -12,7 +12,7 @@ title: 问题排查
 
 ## "default backend - 404"
 
-多种原因可能导致 ingress-controller 无法将流量转发到您的 rancher 实例。 多数情况下，这是由于 ssl 配置错误所致。
+多种原因可能导致 ingress-controller 无法将流量转发到您的 rancher 实例。多数情况下，这是由于 ssl 配置错误所致。
 
 检查事项
 
@@ -67,7 +67,7 @@ kubectl -n cattle-system logs -f rancher-784d94f59b-vgqzh
 
 ## 证书 CN 为伪证书
 
-使用浏览器检查证书详细信息。 如果 Common Name 是`Kubernetes Ingress Controller Fake Certificate`，则说明读取或颁发 SSL 证书时可能出了点问题。
+使用浏览器检查证书详细信息。如果 Common Name 是`Kubernetes Ingress Controller Fake Certificate`，则说明读取或颁发 SSL 证书时可能出了点问题。
 
 > **注意事项:** 如果您使用 LetsEncrypt 颁发证书，则有时可能需要花一些时间来等待证书发布。
 
@@ -104,7 +104,7 @@ Events:
   Warning  ErrGetKeyPair  9m (x16 over 19m)   cert-manager  Error getting keypair for CA issuer: secret "tls-rancher" not found
 ```
 
-### 你自己提供的证书
+### 您自己提供的证书
 
 您的证书将直接应用于`cattle-system`命名空间中的 Ingress 对象。
 
@@ -116,7 +116,7 @@ kubectl -n cattle-system describe ingress
 
 如果其就绪并且 SSL 仍无法正常工作，则您的证书或密码可能格式错误。
 
-检查 nginx-ingress-controller 日志。 由于 nginx-ingress-controller 的容器中有多个容器，因此您需要指定容器的名称。
+检查 nginx-ingress-controller 日志。由于 nginx-ingress-controller 的容器中有多个容器，因此您需要指定容器的名称。
 
 ```
 kubectl -n ingress-nginx logs -f nginx-ingress-controller-rfjrq nginx-ingress-controller

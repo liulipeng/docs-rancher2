@@ -38,7 +38,7 @@ _v2.0.7 版本可用_
       openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
       ```
 
-   1. **元数据 XML**： [从你的 IdP 服务器导出](https://documentation.pingidentity.com/pingfederate/pf83/index.shtml#concept_exportingMetadata.html)的`metadata.xml`文件。
+   1. **元数据 XML**： [从您的 IdP 服务器导出](https://documentation.pingidentity.com/pingfederate/pf83/index.shtml#concept_exportingMetadata.html)的`metadata.xml`文件。
 
 1. 完成**配置 Ping 帐号**表单后，点击页面底部的**启用 Ping 认证**。
 
@@ -52,5 +52,5 @@ _v2.0.7 版本可用_
 >
 > - SAML 协议不支持搜索或查找用户或组。因此，将用户或组添加到 Rancher 时不会对其进行验证。
 > - 添加用户时，必须正确输入确切的用户 ID（即`UID`字段）。键入用户 ID 时，将不会搜索可能匹配的其他用户 ID。
-> - 添加组时，必须从文本框旁边的下拉列表中选择组。 Rancher 假定来自文本框的任何输入都是用户。
+> - 添加组时，必须从文本框旁边的下拉列表中选择组。Rancher 假定来自文本框的任何输入都是用户。
 >   - 群组下拉列表仅显示您所属的群组。您将无法添加您不是其成员的组。

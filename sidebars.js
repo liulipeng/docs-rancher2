@@ -30,10 +30,10 @@ module.exports = {
         label: '部署 Rancher Server',
         items: [
           'quick-start-guide/deployment/_index',
+          'quick-start-guide/deployment/quickstart-manual-setup/_index',
           'quick-start-guide/deployment/digital-ocean-qs/_index',
           'quick-start-guide/deployment/amazon-aws-qs/_index',
-          'quick-start-guide/deployment/quickstart-vagrant/_index',
-          'quick-start-guide/deployment/quickstart-manual-setup/_index'
+          'quick-start-guide/deployment/quickstart-vagrant/_index'
         ]
       },
       {
@@ -60,12 +60,12 @@ module.exports = {
       'installation/how-ha-works/_index',
       {
         type: 'category',
-        label: '在 Kubernetes 集群中安装 Rancher',
+        label: 'Rancher 高可用安装',
         items: [
           'installation/k8s-install/_index',
           {
             type: 'category',
-            label: '1、创建节点和负载均衡',
+            label: '1、配置基础设置',
             items: [
               'installation/k8s-install/create-nodes-lb/_index',
               'installation/k8s-install/create-nodes-lb/nginx/_index',
@@ -83,7 +83,7 @@ module.exports = {
           'installation/other-installation-methods/_index',
           {
             type: 'category',
-            label: '通过 Docker 将 Rancher 安装在单节点中',
+            label: 'Rancher 单节点安装',
             items: [
               'installation/other-installation-methods/single-node-docker/_index',
               'installation/other-installation-methods/single-node-docker/troubleshooting/_index',
@@ -94,7 +94,7 @@ module.exports = {
           },
           {
             type: 'category',
-            label: '在离线环境中安装 Rancher',
+            label: 'Rancher 离线安装',
             items: [
               'installation/other-installation-methods/air-gap/_index',
               'installation/other-installation-methods/air-gap/prepare-nodes/_index',
@@ -112,12 +112,12 @@ module.exports = {
           'installation/options/_index',
           {
             type: 'category',
-            label: '使用 Helm 2 将 Rancher 安装在 Kubernetes 中',
+            label: 'Rancher 高可用 Helm2 安装',
             items: [
               'installation/options/helm2/_index',
               {
                 type: 'category',
-                label: '1、创建节点和负载均衡',
+                label: '1、配置基础设施',
                 items: [
                   'installation/options/helm2/create-nodes-lb/_index',
                   'installation/options/helm2/create-nodes-lb/nginx/_index',
@@ -126,7 +126,7 @@ module.exports = {
               },
               {
                 type: 'category',
-                label: '2、通过 RKE 安装 Kubernetes',
+                label: '2、安装 Kubernetes',
                 items: [
                   'installation/options/helm2/kubernetes-rke/_index',
                   'installation/options/helm2/kubernetes-rke/troubleshooting/_index'
@@ -134,7 +134,7 @@ module.exports = {
               },
               {
                 type: 'category',
-                label: '3、Helm初始化：安装 Tiller',
+                label: '3、Helm 初始化',
                 items: [
                   'installation/options/helm2/helm-init/_index',
                   'installation/options/helm2/helm-init/troubleshooting/_index'
@@ -142,7 +142,7 @@ module.exports = {
               },
               {
                 type: 'category',
-                label: '4、安装Rancher',
+                label: '4、安装 Rancher',
                 items: [
                   'installation/options/helm2/helm-rancher/_index',
                   'installation/options/helm2/helm-rancher/tls-secrets/_index',
@@ -154,7 +154,7 @@ module.exports = {
           },
           {
             type: 'category',
-            label: '使用 Helm 2 将 Rancher 安装到离线环境里',
+            label: 'Rancher 高可用 Helm2 离线安装',
             items: [
               'installation/options/air-gap-helm2/_index',
               'installation/options/air-gap-helm2/prepare-nodes/_index',
@@ -169,13 +169,12 @@ module.exports = {
           'installation/options/chart-options/_index',
           {
             type: 'category',
-            label:
-              '通过 RKE Add-On 安装 Rancher （仅适用于 Rancher 2.0.8 之前的版本）',
+            label: 'RKE Add-On 安装',
             items: [
               'installation/options/rke-add-on/_index',
               {
                 type: 'category',
-                label: '将 Rancher 安装在 Kubernetes 中 并通过4层 LB 暴露',
+                label: 'Rancher 高可用 - 4层 LB',
                 items: [
                   'installation/options/rke-add-on/layer-4-lb/_index',
                   'installation/options/rke-add-on/layer-4-lb/nlb/_index'
@@ -183,7 +182,7 @@ module.exports = {
               },
               {
                 type: 'category',
-                label: '将 Rancher 安装在 Kubernetes 中 并通过7层 LB 暴露',
+                label: 'Rancher 高可用 - 7层 LB',
                 items: [
                   'installation/options/rke-add-on/layer-7-lb/_index',
                   'installation/options/rke-add-on/layer-7-lb/alb/_index',
@@ -210,7 +209,7 @@ module.exports = {
           'installation/options/local-system-charts/_index',
           {
             type: 'category',
-            label: '升级Cert-Manager',
+            label: '升级 Cert-Manager',
             items: [
               'installation/options/upgrading-cert-manager/_index',
               'installation/options/upgrading-cert-manager/helm-2-instructions/_index'
@@ -262,7 +261,7 @@ module.exports = {
         ]
       }
     ],
-    备份与容灾恢复指南: [
+    备份和恢复指南: [
       'backups/_index',
       {
         type: 'category',
@@ -310,7 +309,7 @@ module.exports = {
           'admin-settings/authentication/ping-federate/_index',
           {
             type: 'category',
-            label: '配置微软 Active Directory Federation Service (SAML)',
+            label: '对接 AD FS (SAML)',
             items: [
               'admin-settings/authentication/microsoft-adfs/_index',
               'admin-settings/authentication/microsoft-adfs/microsoft-adfs-setup/_index',
@@ -323,7 +322,7 @@ module.exports = {
       },
       {
         type: 'category',
-        label: '角色权限控制（RBAC）',
+        label: 'RBAC',
         items: [
           'admin-settings/rbac/_index',
           'admin-settings/rbac/global-permissions/_index',
@@ -392,7 +391,7 @@ module.exports = {
           'cluster-provisioning/rke-clusters/_index',
           {
             type: 'category',
-            label: '在IaaS的新节点上运行Kubernetes',
+            label: '创建节点和集群',
             items: [
               'cluster-provisioning/rke-clusters/node-pools/_index',
               'cluster-provisioning/rke-clusters/node-pools/ec2/_index',
@@ -400,7 +399,7 @@ module.exports = {
               'cluster-provisioning/rke-clusters/node-pools/azure/_index',
               {
                 type: 'category',
-                label: '在 vSphere 上创建集群',
+                label: 'vSphere',
                 items: [
                   'cluster-provisioning/rke-clusters/node-pools/vsphere/_index',
                   'cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/_index',
@@ -413,7 +412,7 @@ module.exports = {
           },
           {
             type: 'category',
-            label: '在IaaS的已有节点上运行Kubernetes',
+            label: '自定义集群',
             items: [
               'cluster-provisioning/rke-clusters/custom-nodes/_index',
               'cluster-provisioning/rke-clusters/custom-nodes/agent-options/_index'
@@ -421,7 +420,7 @@ module.exports = {
           },
           {
             type: 'category',
-            label: '在Windows集群上运行Kubernetes',
+            label: 'Windows 集群',
             items: [
               'cluster-provisioning/rke-clusters/windows-clusters/_index',
               'cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/_index',
@@ -460,7 +459,7 @@ module.exports = {
       'cluster-admin/nodes/_index',
       {
         type: 'category',
-        label: '持久化存储：卷和存储类',
+        label: '存储卷和存储类',
         items: [
           'cluster-admin/volumes-and-storage/_index',
           'cluster-admin/volumes-and-storage/how-storage-works/_index',
@@ -594,8 +593,8 @@ module.exports = {
         items: [
           'k8s-in-rancher/workloads/_index',
           'k8s-in-rancher/workloads/deploy-workloads/_index',
-          'k8s-in-rancher/workloads/rollback-workloads/_index',
           'k8s-in-rancher/workloads/upgrade-workloads/_index',
+          'k8s-in-rancher/workloads/rollback-workloads/_index',
           'k8s-in-rancher/workloads/add-a-sidecar/_index'
         ]
       },

@@ -29,7 +29,7 @@ title: 为Rancher社区做出贡献
 | kontainer-engine       | https://github.com/rancher/kontainer-engine | 该库是 kontainer-engine 的源代码，kontainer-engine 是用于配置托管 Kubernetes 集群的工具。                           |
 | RKE                    | https://github.com/rancher/rke              | 该库是 Rancher Kubernetes Engine 的代码库，Rancher Kubernetes Engine 是在任何机器构建，配置 Kubernetes 集群的工具。 |
 | CLI                    | https://github.com/rancher/cli              | 该库是 Rancher 2.x 中使用的 Rancher CLI 的源代码。                                                                  |
-| Rancher Helm           | https://github.com/rancher/helm             | 该库是打包的 Helm 二进制文件的来源。 这是 `helm/helm` 库的分支。                                                    |
+| Rancher Helm           | https://github.com/rancher/helm             | 该库是打包的 Helm 二进制文件的来源。这是 `helm/helm` 库的分支。                                                     |
 | Telemetry              | https://github.com/rancher/telemetry        | 该库是采集遥测数据的源代码库。                                                                                      |
 | loglevel               | https://github.com/rancher/loglevel         | 该库是日志级别二进制文件的源代码库，用于动态更改日志级别。                                                          |
 
@@ -42,15 +42,15 @@ title: 为Rancher社区做出贡献
 
 ## 编译，构建源代码
 
-每个源代码仓库都有一个 Makefile，并且可以使用 `make` 命令来构建。 `make` 的 targets 就是`/scripts` 目录中的脚本，每个 target 都将使用 [Dapper](https://github.com/rancher/dapper) 在隔离的环境中执行构建。 这个过程是通过`Dockerfile.dapper`完成的，其中包括所有所需要的构建工具。
+每个源代码仓库都有一个 Makefile，并且可以使用 `make` 命令来构建。`make` 的 targets 就是`/scripts` 目录中的脚本，每个 target 都将使用 [Dapper](https://github.com/rancher/dapper) 在隔离的环境中执行构建。这个过程是通过`Dockerfile.dapper`完成的，其中包括所有所需要的构建工具。
 
 默认 target 是 `ci` ，这个 target 将运行 `./scripts/validate` 、 `./scripts/build` 、 `./scripts/package` 和 `./scripts/package`。构建的出的二进制文件将位于 `./build/bin` 中，并且通常也会生成相应的 Docker 镜像。
 
 ## 缺陷，问题和询问
 
-如果你发现任何错误或遇到任何麻烦，请搜索[已经报告的 Issues](https://github.com/rancher/rancher/issues)，因为可能有人遇到过相同的问题或我们正在积极寻求解决方案。
+如果您发现任何错误或遇到任何麻烦，请搜索[已经报告的 Issues](https://github.com/rancher/rancher/issues)，因为可能有人遇到过相同的问题或我们正在积极寻求解决方案。
 
-如果找不到与你的问题相关的任何信息，请通过[创建 Issue](https://github.com/rancher/rancher/issues/new)与我们联系。尽管我们有许多与 Rancher 相关的代码库，但我们希望将错误记录在 `rancher/rancher` 的代码库中，这样我们就不会错过它们！如果你想提出问题或向其他用户询问用例，我们建议在[Rancher 全球论坛](https://forums.rancher.com)或[Rancher 中文论坛](https://forums.cnrancher.com/)上发表文章。或者在 Rancher 微信交流群中和大家一起讨论。
+如果找不到与您的问题相关的任何信息，请通过[创建 Issue](https://github.com/rancher/rancher/issues/new)与我们联系。尽管我们有许多与 Rancher 相关的代码库，但我们希望将错误记录在 `rancher/rancher` 的代码库中，这样我们就不会错过它们！如果您想提出问题或向其他用户询问用例，我们建议在[Rancher 全球论坛](https://forums.rancher.com)或[Rancher 中文论坛](https://forums.cnrancher.com/)上发表文章。或者在 Rancher 微信交流群中和大家一起讨论。
 
 ### 提交问题清单
 
@@ -62,14 +62,14 @@ title: 为Rancher社区做出贡献
 > :::
 
 - **资源：** 尽可能提供有关已使用资源的详细信息。问题的根源可能是很多，包括尽可能多的细节有助于确定根本原因。请参阅以下示例：
-  - **主机：** 主机具有什么规格，例如 CPU /内存/磁盘，它在什么云上，你使用的是什么 Amazon Machine Image，你使用的是什么 DigitalOcean Droplet，你配置的是什么 Image，我们可以在尝试时重建或使用这些 Image。
-  - **操作系统：** 你使用什么操作系统？提供详细信息是非常有帮助的，例如确切的操作系统版本 `cat /etc/os-release` 和内核版本 `uname -r` 。
-  - **Docker：** 你正在使用哪个 Docker 版本，是怎么安装的？可以通过提供 `docker version` 和 `docker info` 的输出找到 Docker 的大多数细节。
-  - **环境：** 你是否在代理环境中，是否正在使用可信的 CA，还是在用自签名证书，是否正在使用外部负载均衡器。
-  - **Rancher：** 你正在使用什么版本的 Rancher，可以在用户界面的左下方找到，也可以从主机上运行的 Image 的 Tag 中找到。
-  - **集群：** 你创建了哪种集群，如何创建的，在创建集群时指定了什么参数。
-- **重现此问题的步骤：** 请尽量详细的提供你是如何遇到所报告的情况的信息。这有助于重现你遇到的情况。
-  - 提供手动步骤或自动化脚本，用于从新创建的设置获取你所报告的情况。
+  - **主机：** 主机具有什么规格，例如 CPU /内存/磁盘，它在什么云上，您使用的是什么 Amazon Machine Image，您使用的是什么 DigitalOcean Droplet，您配置的是什么 Image，我们可以在尝试时重建或使用这些 Image。
+  - **操作系统：** 您使用什么操作系统？提供详细信息是非常有帮助的，例如确切的操作系统版本 `cat /etc/os-release` 和内核版本 `uname -r` 。
+  - **Docker：** 您正在使用哪个 Docker 版本，是怎么安装的？可以通过提供 `docker version` 和 `docker info` 的输出找到 Docker 的大多数细节。
+  - **环境：** 您是否在代理环境中，是否正在使用可信的 CA，还是在用自签名证书，是否正在使用外部负载均衡器。
+  - **Rancher：** 您正在使用什么版本的 Rancher，可以在用户界面的左下方找到，也可以从主机上运行的 Image 的 Tag 中找到。
+  - **集群：** 您创建了哪种集群，如何创建的，在创建集群时指定了什么参数。
+- **重现此问题的步骤：** 请尽量详细的提供您是如何遇到所报告的情况的信息。这有助于重现您遇到的情况。
+  - 提供手动步骤或自动化脚本，用于从新创建的设置获取您所报告的情况。
 - **日志：** 提供使用资源中的数据/日志。
 
   - Rancher Server 日志
@@ -119,11 +119,11 @@ title: 为Rancher社区做出贡献
   - Docker 守护程序日志记录（这些可能并不全部存在，具体取决于操作系统）
     - `/var/log/docker.log`
 
-* **指标：** 如果遇到性能问题，请提供尽可能多的指标数据（文件或屏幕截图），以帮助确定正在发生的事情。如果你有与机器有关的问题，则可以提供输出 `top` ， `free -m` 和 `df` 的输出，这些输出显示了进程/内存/磁盘使用情况。
+* **指标：** 如果遇到性能问题，请提供尽可能多的指标数据（文件或屏幕截图），以帮助确定正在发生的事情。如果您有与机器有关的问题，则可以提供输出 `top` ， `free -m` 和 `df` 的输出，这些输出显示了进程/内存/磁盘使用情况。
 
 ## 文档
 
-如果你对我们的文档有任何更新，请向我们的文档仓库提 PR。
+如果您对我们的文档有任何更新，请向我们的文档仓库提 PR。
 
 - [Rancher 2.x 文档库](https://github.com/rancher/docs)：此仓库是 Rancher 2.x 所有文档的存放位置。它们位于仓库中的 `content` 文件夹中。
 

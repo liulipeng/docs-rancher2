@@ -2,9 +2,9 @@
 title: 生产就绪集群检查清单
 ---
 
-在本节中，我们将介绍如何创建可用于生产的 Kubernetes 业务集群。这个集群将用来运行您的应用程序和服务。
+在本节中，我们将介绍如何创建可用于生产的 Kubernetes 用户集群。这个集群将用来运行您的应用程序和服务。
 
-关于对创建业务集群的节点的要求，例如操作系统/Docker、硬件和网络的需求，请参考[节点需求](/docs/cluster-provisioning/node-requirements/_index)。
+关于对创建用户集群的节点的要求，例如操作系统/Docker、硬件和网络的需求，请参考[节点需求](/docs/cluster-provisioning/node-requirements/_index)。
 
 :::important 重要
 这里是最重要的一些最佳实践，我们强烈建议将这些最佳实践应用于全部的生产集群。
@@ -18,7 +18,7 @@ title: 生产就绪集群检查清单
 
 ## 备份 etcd
 
-- 启用 etcd 快照。验证快照是否被创建成功，并且进行一次灾难恢复来验证快照是否有效。etcd 中存储了你集群状态，丢失 etcd 数据意味着丢失集群。请确保为你的集群配置了[etcd 循环快照](/docs/backups/backups/ha-backups/_index)，并确保快照存储在外部（节点之外）。
+- 启用 etcd 快照。验证快照是否被创建成功，并且进行一次灾难恢复来验证快照是否有效。etcd 中存储了您集群状态，丢失 etcd 数据意味着丢失集群。请确保为您的集群配置了[etcd 循环快照](/docs/backups/backups/ha-backups/_index)，并确保快照存储在外部（节点之外）。
 
 ## 集群架构
 
@@ -47,4 +47,4 @@ title: 生产就绪集群检查清单
 ## 网络
 
 - 最小化网络延迟。Rancher 建议最小化 etcd 节点之间的延迟。默认的`心跳间隔`为 `500`，默认的`选举超时`为`5000`。这些[etcd 调优设置](https://coreos.com/etcd/docs/latest/tuning.html)允许 etcd 在大多数网络（网络延迟特别高的情况下除外）中运行。
-- 集群节点应该位于单个区域内。大多数云厂商在一个区域内会提供多个可用区。这可以增加你的集群的高可用性。任何角色的节点都可以使用多可用区。如果您正在使用[Kubernetes Cloud Provider](/docs/cluster-provisioning/rke-clusters/options/Cloud-providers/_index)资源，请参考相关文档了解任何限制(例如可用区存储的限制)。
+- 集群节点应该位于单个区域内。大多数云厂商在一个区域内会提供多个可用区。这可以增加您的集群的高可用性。任何角色的节点都可以使用多可用区。如果您正在使用[Kubernetes Cloud Provider](/docs/cluster-provisioning/rke-clusters/options/Cloud-providers/_index)资源，请参考相关文档了解任何限制(例如可用区存储的限制)。

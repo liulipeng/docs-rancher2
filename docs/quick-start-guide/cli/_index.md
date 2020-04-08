@@ -6,7 +6,7 @@ Interact with Rancher using command line interface (CLI) tools from your worksta
 
 ### Rancher CLI
 
-Follow the steps in [rancher cli](../cli).
+Follow the steps in [rancher cli](/docs/cli/_index/).
 
 Ensure you can run `rancher kubectl get pods` successfully.
 
